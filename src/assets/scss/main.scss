@@ -1,0 +1,19 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+
+@import './index.scss';
+@import './separated.scss';
+@import './navbar.scss';
+@import './navigations.scss';
+@import './infoUs.scss';
+@import './numbers';
+@import './news';
+@import './footer.scss';
