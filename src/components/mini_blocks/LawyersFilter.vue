@@ -34,6 +34,8 @@
                   :custom-label="nameWithLang"
                   :show-labels="false"
                   :placeholder="$t('specialization')"
+                  :max-height="250"
+                  @scroll="onScroll"
                 >
                   <template slot="noResult">{{ $t("noInfoFound") }}</template>
                 </multiselect>
@@ -79,7 +81,23 @@ export default {
         { name: "Mutahasislik1", value: "mutahasislik1" },
         { name: "Mutahasislik2", value: "mutahasislik2" },
         { name: "Mutahasislik3", value: "mutahasislik3" },
+        { name: "Mutahasislik4", value: "mutahasislik4" },
+        { name: "Mutahasislik5", value: "mutahasislik5" },
+        { name: "Mutahasislik6", value: "mutahasislik6" },
+        { name: "Mutahasislik7", value: "mutahasislik7" },
+        { name: "Mutahasislik8", value: "mutahasislik8" },
+        { name: "Mutahasislik9", value: "mutahasislik9" },
+        { name: "Mutahasislik10", value: "mutahasislik10" },
+        { name: "Mutahasislik11", value: "mutahasislik11" },
+        { name: "Mutahasislik12", value: "mutahasislik12" },
+        { name: "Mutahasislik13", value: "mutahasislik13" },
+        { name: "Mutahasislik14", value: "mutahasislik14" },
+        { name: "Mutahasislik15", value: "mutahasislik15" },
+        { name: "Mutahasislik16", value: "mutahasislik16" },
+        { name: "Mutahasislik17", value: "mutahasislik17" },
       ],
+      isVisible: false,
+      getCount: 0,
     };
   },
   methods: {
@@ -87,9 +105,27 @@ export default {
     nameWithLang({ name }) {
       return `${name}`;
     },
+    onScroll(e) {
+      console.log(e);
+    },
   },
   mounted() {
-    this.getContragentslist();
+    // this.getContragentslist();
+    let scrolWrap = document.querySelectorAll(".multiselect__content-wrapper");
+    scrolWrap.forEach((item) => {
+      item.addEventListener("scroll", () => {
+        let sb = item.querySelector(".multiselect__content");
+        if (+item.offsetHeight + item.scrollTop >= sb.offsetHeight && this.getCount < 1) {
+          this.getCount++;
+          this.optionsMutahasislik = [
+            ...this.optionsMutahasislik,
+            ...this.optionsMutahasislik,
+          ];
+          this.getCount = 0;
+          console.log(this.optionsMutahasislik);
+        }
+      });
+    });
   },
 };
 </script>

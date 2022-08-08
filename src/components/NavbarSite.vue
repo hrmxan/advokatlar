@@ -1,11 +1,7 @@
 <template>
   <div>
     <header>
-      <section
-        class="sidebar"
-        @click="colapse = false"
-        :class="{ close: !colapse }"
-      >
+      <section class="sidebar" @click="colapse = false" :class="{ close: !colapse }">
         <div class="sidebar__body">
           <div class="kres">
             <a href="#!" @click.prevent="colapse = false" class="closeSidebar">
@@ -14,13 +10,13 @@
           </div>
           <ul class="navBar__colapse">
             <li>
-              <router-link to="/"> {{$t('home')}} </router-link>
+              <router-link to="/"> {{ $t("home") }} </router-link>
             </li>
             <li>
-              <router-link to="/news"> {{$t('news')}} </router-link>
+              <router-link to="/news"> {{ $t("news") }} </router-link>
             </li>
             <li>
-              <router-link to="/lawyers"> {{$t('lawyers')}} </router-link>
+              <router-link to="/lawyers"> {{ $t("lawyers") }} </router-link>
             </li>
           </ul>
         </div>
@@ -31,7 +27,7 @@
             <img src="@/assets/img/logo.png" />
             <div class="logo__titles">
               <strong>
-                {{$t('ORAV')}}
+                {{ $t("ORAV") }}
               </strong>
             </div>
           </router-link>
@@ -39,22 +35,14 @@
             <NavbarLinks />
           </div>
           <div class="tools">
-            <b-dropdown
-              right
-              :text="lang"
-              variant="outline-primary"
-              class="mx-3"
-            >
+            <b-dropdown right :text="lang" variant="outline-primary" class="mx-3">
               <b-dropdown-item
                 @click="changeLang(l)"
                 href="#"
                 v-for="(l, index) in langs"
                 :key="index"
               >
-                <img
-                  class="my__flag"
-                  :src="require(`@/assets/img/icons/${l}.png`)"
-                />
+                <img class="my__flag" :src="require(`@/assets/img/icons/${l}.png`)" />
                 {{ $t(`langs.${l}`) }}
               </b-dropdown-item>
             </b-dropdown>
@@ -83,7 +71,7 @@ export default {
       colapse: false,
       lang: "Uz",
       langs: ["uz", "en", "ru"],
-      toastOptions
+      toastOptions,
     };
   },
   methods: {
@@ -95,7 +83,7 @@ export default {
   },
   created() {
     this.lang = this.$t(`langs.${this.$i18n.locale}`);
-    this.$toast.success('Hello world!',this.toastOptions)
+    // this.$toast.success('Hello world!',this.toastOptions)
   },
 };
 </script>
